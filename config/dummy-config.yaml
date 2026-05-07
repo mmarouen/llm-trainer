@@ -1,0 +1,96 @@
+models:
+  llama-3.2-pytorch:
+    id: "meta-llama-Llama-3.2-3B-Instruct"
+    image:
+      repository-name: ''
+      image-name: ''
+      dockerfile: 'docker/Dockerfile.pytorch'
+    registry-id:
+      europe-west3: ''
+    storage:
+      bucket: ''
+      relative-path: 'meta-llama-Llama-3.2-3B-Instruct'
+    endpoint:
+      name: ''
+      id: ''
+      is-dedicated: true
+      name: predict
+    inference:
+      max_model_length: 2048
+      max_new_tokens: 600
+  llama-3.2-vllm:
+    id: "meta-llama-Llama-3.2-3B-Instruct"
+    image:
+      repository-name: ''
+      image-name: ''
+      dockerfile: 'docker/Dockerfile.vllm'
+    registry-id:
+      europe-west3: ''
+    storage:
+      bucket: ''
+      relative-path: 'meta-llama-Llama-3.2-3B-Instruct'
+    endpoint:
+      name: ''
+      id: ''
+      is-dedicated: true
+      name: predict
+    inference:
+      max_model_length: 2048
+      max_new_tokens: 512
+  llama-3.2-trtllm:
+    id: "meta-llama-Llama-3.2-3B-Instruct"
+    image:
+      repository-name: ''
+      image-name: ''
+      dockerfile: 'docker/Dockerfile.trtllm'
+    registry-id:
+      europe-west3: ''
+      europe-west4: ''
+      europe-west2: ''
+    storage:
+      bucket: ''
+      relative-path: ''
+      hf-relative-path: 'meta-llama-Llama-3.2-3B-Instruct'
+    endpoint:
+      name: ''
+      id: 
+        europe-west3: ''
+        europe-west4: ''
+        europe-west2: ''
+      is-dedicated: true
+      name: /v2/models/tensorrt_llm_bls/generate_stream
+    inference:
+      max_model_length: 2048
+      max_new_tokens: 512
+      inference_batch_size: 64
+      tensor_parallel: 2
+      num_gous: 2
+trtllm-build:
+  image:
+    repository-name: ''
+    image-name: ''
+    dockerfile: 'docker/Dockerfile.trtllm.dev'
+  storage:
+    bucket: ''
+    relative-path: 'meta-llama-Llama-3.2-3B-Instruct'
+compute:
+  l4x2:
+    machine_type: 'g2-standard-24'
+    accelerator_type: 'nvidia-l4'
+    n_accelerators: 2
+  l4:
+    machine_type: 'g2-standard-8'
+    accelerator_type: 'nvidia-l4'
+    n_accelerators: 1
+  v100-small:
+    machine_type: 'n1-standard-4'
+    accelerator_type: 'nvidia-tesla-v100'
+  v100:
+    machine_type: 'n1-standard-8'
+    accelerator_type: 'nvidia-tesla-v100'
+  a100-40g:
+    machine_type: 'a2-highgpu-1g'
+    accelerator_type: 'nvidia-tesla-a100'
+  a100-40g:
+    machine_type: 'a2-ultragpu-1g'
+    accelerator_type: 'nvidia-a100-80gb'

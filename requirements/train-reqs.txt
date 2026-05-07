@@ -1,0 +1,8 @@
+accelerate
+transformers
+gcsfs
+google-cloud-storage
+google-cloud-logging
+wandb
+weave
+bitsandbytes

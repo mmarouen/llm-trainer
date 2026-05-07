@@ -1,0 +1,30 @@
+scheduling:
+  strategy: STANDARD
+workerPoolSpecs:
+- containerSpec:
+    env:
+    - name: job_id
+      value: 1st_generation_demo_train
+    - name: demo_mode
+      value: 'True'
+    - name: micro_batch_size
+      value: '8'
+    - name: sequence_length
+      value: '3968'
+    - name: gradient_accumulation_steps
+      value: '16'
+    - name: WANDB_API_KEY
+      value: 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
+    - name: verbose
+      value: 'True'
+    - name: optimizer_precision_bytes
+      value: '1'
+    imageUri: europe-west4-docker.pkg.dev/testcase-488513/train-repository/train-image:latest
+  diskSpec:
+    bootDiskSizeGb: 200
+    bootDiskType: pd-ssd
+  machineSpec:
+    acceleratorCount: 1
+    acceleratorType: NVIDIA_A100_80GB
+    machineType: a2-ultragpu-1g
+  replicaCount: 1
