@@ -3,3 +3,4 @@ config/.env.yaml
 config/config.yaml
 tmp
 data
+.DS_Store
